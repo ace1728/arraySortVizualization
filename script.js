@@ -179,6 +179,24 @@ function shellSort() {
         createBarsWithAnimation();
 
 }
+// Function to perform the Selection Sort algorithm
+function selectionSort() {
+    for (let i = 0; i < data.length - 1; i++) {
+        let minIndex = i;
+        for (let j = i + 1; j < data.length; j++) {
+            if (data[j] < data[minIndex]) {
+                minIndex = j;
+            }
+        }
+        if (minIndex !== i) {
+            // Swap elements in the array
+            [data[i], data[minIndex]] = [data[minIndex], data[i]];
+        }
+    }
+    // After sorting, reset the size to the original and recreate the bars
+    sizeFactor = 1;
+    createBarsWithAnimation();
+}
 
 
 
@@ -224,4 +242,10 @@ changeSizeButton.addEventListener('click', () => {
 const randomizeArrayButton = document.getElementById('randomizeArrayButton');
 randomizeArrayButton.addEventListener('click', () => {
     shuffleArray();
+});
+
+// Attach the "Selection Sort" function to the button click event
+const selectionSortButton = document.getElementById('selectionSortButton');
+selectionSortButton.addEventListener('click', () => {
+    selectionSort();
 });
